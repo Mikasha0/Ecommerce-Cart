@@ -1,10 +1,9 @@
-import Navbar from "./component/Navbar/Navbar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Product from "./component/Product/Product";
+import Navbar from "./component/Navbar";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Cart from "./Pages/Cart";
+import Home from "./Pages/Home";
 
 function App() {
   const client = new QueryClient();
@@ -15,11 +14,10 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />}></Route>
+            <Route path="/" element={<Home/>}></Route>
             <Route path="/cart" element={<Cart />}></Route>
           </Routes>
         </BrowserRouter>
-        <Product />
       </QueryClientProvider>
     </div>
   );

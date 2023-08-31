@@ -1,8 +1,11 @@
+import Product from "../component/Product";
 
 export default function Home() {
   return (
     <div>
-        <h1>Home</h1>
+      <section>
+        <Product/>
+      </section>
     </div>
-  )
+  );
 }
