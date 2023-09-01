@@ -1,32 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { useSelector, useDispatch } from "react-redux";
-import { addToCart } from "../redux/cartSlice/CartSlice";
+import { ProductType } from "../types/product.types";
+import { addToCart } from "../store/cartSlice";
+import { useDispatch } from "react-redux";
+import ProductList from "./ProductList";
 
-export interface ProductType {
-  products: Product[];
-  total:    number;
-  skip:     number;
-  limit:    number;
-}
-
-export interface product {
-  products: Product[]
-}
-
-export interface Product {
-  id:                 number;
-  title:              string;
-  description:        string;
-  price:              number;
-  discountPercentage: number;
-  rating:             number;
-  stock:              number;
-  brand:              string;
-  category:           string;
-  thumbnail:          string;
-  images:             string[];
-}
 export default function Product() {
+  const dispatch = useDispatch();
+
   const { isLoading, data } = useQuery({
     queryKey: ["ProductDetailsData"],
     queryFn: async () =>
@@ -35,31 +15,16 @@ export default function Product() {
         .then((data) => data.products),
   });
 
-  const cartData = useSelector((state) => state?.cart);
-  const dispatch = useDispatch()
-
-  console.log(cartData)
-
   if (isLoading) return "Loading...";
+
+  const addProduct = (product: ProductType) => {
+    dispatch(addToCart(product));
+  };
   return (
     <div className="productsWrapper">
-      {data.map((product: products) => (
+      {data.map((product: ProductType) => (
         <div className="product-card" key={product.id}>
-          <a href="#">
-            <div className="product-image">
-              <img src={product.images[0]} alt="product image" />
-            </div>
-          </a>
-          <div className="product-details">
-            <a href="#" className="product-title">
-              {product.title}
-            </a>
-            <p className="">{product.description}</p>
-            <div className="add-to-cart">
-              <span className="product-price">${product.price}</span>
-              <button className="add-to-cart-button" onClick={()=>dispatch(addToCart(product))}>Add to cart</button>
-            </div>
-          </div>
+          <ProductList product={product} addProduct={addProduct} />
         </div>
       ))}
     </div>

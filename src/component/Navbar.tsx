@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom";
+import { BsCart3 } from 'react-icons/bs';
 import { FaHamburger } from "react-icons/fa";
-import {BsCart3} from 'react-icons/bs'
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { ProductType } from '../types/product.types';
+
+export interface CartType {
+  cart:  ProductType[];
+}
 
 export default function Navbar() {
-  const cartData = useSelector((state) => state?.cart);
+
+  const items = useSelector((state:CartType)=> state.cart);
 
   return (
     <nav>
@@ -24,7 +30,7 @@ export default function Navbar() {
             Cart
           </Link>
         </li>
-        <span className="cartCount"><BsCart3/>: {cartData.cartData.length}</span>
+        <span className="cartCount"><BsCart3/>: {items.length}</span>
       </ul>
     </nav>
   );

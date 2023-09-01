@@ -138,7 +138,7 @@ nav ul li {
 
 
 .productsWrapper {
-  padding: 1rem 0.5rem;
+  padding: 1rem 0.8rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
@@ -153,7 +153,7 @@ nav ul li {
 }
 
 /* Adjust grid for screens below 700px */
-@media (max-width: 700px) {
+@media (max-width: 500px) {
   .productsWrapper {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -166,9 +166,13 @@ nav ul li {
     width: 100%;
   }
 }
-@media (max-width: 350px) {
+@media (max-width: 500px) {
   .productsWrapper {
     grid-template-columns: repeat(1, 1fr);
+    padding: 1rem 0;
+  }
+  .product-card{
+    margin: 0 auto;
   }
 }
 .product-card {
@@ -256,3 +260,71 @@ nav ul li {
   background-color: #3182ce;
 }
 
+
+/* Cart page css starts here... */
+.cartWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.cartCard {
+  width: 80%;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px ;
+  margin:1rem 0;
+}
+
+.cartCardThumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.cartCardContent {
+  flex: 1;
+  margin-left: 12px;
+}
+
+.cartCardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.cartCardPrice {
+  font-size: 14px;
+  color: #764abc;
+}
+
+.cartCardActions {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  background: #764abc;
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-right: 8px;
+}
+
+.btn:hover {
+  background: #513282;
+}
