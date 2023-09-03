@@ -32,14 +32,6 @@ export default function Cart() {
     { discountedPrice: 0, fullAmount: 0, totalDiscount: 0 }
   );
 
-<div className="cartDetails">
-  <h4>Summary</h4>
-  <h5>Full Amount: {totalPrice.fullAmount}</h5>
-  <h5>Subtotal: {totalPrice.discountedPrice}</h5>
-  <h5>Total Discount: {totalPrice.totalDiscount}</h5> 
-</div>
-
-
   return (
     <div className="cart" style={{ display: "flex" }}>
       <div className="cartWrapper">
