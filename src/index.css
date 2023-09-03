@@ -132,18 +132,6 @@ nav ul li {
 
 
 /* Product component css starts from here */
-/* img {
-  height: 80px;
-}
-
-.card {
-  background: white;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); */
-
-
 .productsWrapper {
   padding: 1rem 0.8rem;
   display: grid;
@@ -211,11 +199,9 @@ nav ul li {
 .product-details {
   padding: 1rem 1.5rem;
   flex-grow: 1;
-  /* Allow the details section to take remaining space */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* Align items to the bottom */
 }
 
 
@@ -272,7 +258,6 @@ nav ul li {
   cursor: pointer;
   transition: background-color 0.2s;
   align-self: flex-end;
-  /* Align to the right (bottom) */
 }
 
 .add-to-cart-button:hover {
@@ -313,12 +298,10 @@ nav ul li {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
-  /* display: flex;
-  justify-content: space-between; */
   align-items: center;
-  padding: 12px ;
+  padding: 15px 15px ;
   margin:1rem 1.3rem 1rem 0;
-  height: 5rem;
+  height: 6.4rem;
 }
 
 @media (max-width: 1000px) {
@@ -330,10 +313,12 @@ nav ul li {
  }
  .cartDetails{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 95%;
   margin:0 auto;
+  margin-bottom: 1rem;
 
  }
 }
@@ -436,6 +421,11 @@ nav ul li {
   background: #513282;
 }
 
+.summary{
+  text-align: center;
+  margin-bottom: 4px;
+  color: #3182ce;
+}
 /* css for Error component starts here */
 
 .container {

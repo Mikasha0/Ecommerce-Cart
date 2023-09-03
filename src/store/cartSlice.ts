@@ -11,15 +11,15 @@ const initialState: CartItems = localStorageCartItems
   ? JSON.parse(localStorageCartItems)
   : [];
 
-const removeCart = (state:CartItems, id:number) => {
+const removeCart = (state: CartItems, id: number) => {
   const removeCart = state.filter((item) => item.id !== id);
   localStorage.setItem("CartItems", JSON.stringify(removeCart));
 
   return removeCart;
 };
 
-const increaseCartQuantity = (state:CartItems, id:ProductType) => {
-  const editedData = state.map((item:any) => {
+const increaseCartQuantity = (state: CartItems, id: number) => {
+  const editedData = state.map((item: any) => {
     if (item.id === id) {
       return { ...item, quantity: item.quantity + 1 };
     }
@@ -44,11 +44,11 @@ export const cartSlice = createSlice({
         );
         state.push({ ...action.payload, quantity: 1 });
       } else {
-        return increaseCartQuantity(state, action.payload)
+        return increaseCartQuantity(state, action.payload.id);
       }
     },
     removeFromCart: (state: CartItems, action: PayloadAction<number>) => {
-      removeCart(state, action.payload);
+      return removeCart(state, action.payload);
     },
     increaseQuantity: (state: CartItems, action: PayloadAction<number>) => {
       const editedData = state.map((item) => {
@@ -64,17 +64,16 @@ export const cartSlice = createSlice({
       const editedData = state.map((item) => {
         if (item.id === action.payload) {
           if (item.quantity === 1) {
-            removeCart(state, action.payload);
-            return;
+            return null;
           } else {
             return { ...item, quantity: item.quantity - 1 };
           }
         }
         return item;
       });
-      const filteredData = editedData.filter((item) => item !== undefined);
+      const filteredData = editedData.filter((item) => item !== null);
       localStorage.setItem("CartItems", JSON.stringify(filteredData));
-      return filteredData;
+      return filteredData as CartItems;
     },
   },
 });

@@ -4,10 +4,8 @@ import { addToCart } from "../store/cartSlice";
 import { useDispatch } from "react-redux";
 import ProductList from "./ProductList";
 import ErrorComponent from "./ErrorComponent";
-export interface APIError {
-  stack?:string | undefined,
-  message:string
-}
+import { APIError } from "../types/api-error.types";
+
 export default function Product() {
   const dispatch = useDispatch();
 
@@ -15,26 +13,29 @@ export default function Product() {
     queryKey: ["ProductDetailsData"],
     queryFn: async () => {
       try {
-        const response = await fetch("https://dummyjson.com/productss");
-  
+        const response = await fetch(`${import.meta.env.VITE_API_URL}`);
+
         if (response.status === 404) {
-          const customError: APIError = new Error("Failed to fetch data from the API");
+          const customError: APIError = new Error(
+            "Failed to fetch data from the API"
+          );
           throw customError;
         }
         return response.json().then((data) => data.products);
       } catch (error) {
-        const customError: APIError = new Error("Error fetching data from the API");
+        const customError: APIError = new Error(
+          "Error fetching data from the API"
+        );
         throw customError;
       }
     },
   });
-  
+
   if (isLoading) return "Loading...";
   if (error) {
     const customError: APIError = error as APIError;
     return <ErrorComponent errorMessage={customError.message} />;
-  }  
-  
+  }
 
   const addProduct = (product: ProductType) => {
     dispatch(addToCart(product));

@@ -4,11 +4,7 @@ import { useDispatch } from "react-redux";
 import { decreaseQuantity, increaseQuantity } from "../store/cartSlice";
 import { MdDeleteForever } from "react-icons/md";
 import NormalButton from "./NormalButton";
-
-export interface CarttItemsType {
-  product: ProductTypeWithQuantity;
-  handleRemove: (productId: number) => void;
-}
+import { CarttItemsType } from "../types/cart-items.types";
 
 export interface ProductTypeWithQuantity extends ProductType {
   quantity: number;
@@ -34,7 +30,7 @@ export default function CartItems({ product, handleRemove }: CarttItemsType) {
       </div>
       <h5>{product?.title}</h5>
       <h5 className="line-through">${product?.price}</h5>
-      <h5>${discountedPrice}</h5>
+      <h5>${discountedPrice * product.quantity}</h5>
 
       <div className="item-btn">
         <NormalButton
