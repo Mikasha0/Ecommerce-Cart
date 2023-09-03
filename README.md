@@ -3,6 +3,7 @@
 ## Description
 
 Ecommerce Store add to cart made using react, reduc, typescript and pure css. 
+*Note: all the css are included in the index.css file.
 
 ## Installation 
 
