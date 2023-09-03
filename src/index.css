@@ -124,6 +124,13 @@ nav ul li {
   }
 }
 
+@media (max-width:450px) {
+  .logo{
+    font-size: 18px;
+  }
+}
+
+
 /* Product component css starts from here */
 /* img {
   height: 80px;
@@ -218,8 +225,20 @@ nav ul li {
   color: #2d3748;
 }
 
+.price-view{
+  display: flex;
+  flex-direction: column;
+}
+
 .product-price {
-  font-size: 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #2a4365;
+  margin-bottom: 4px;
+}
+
+.discounted-price{
+  font-size: 1rem;
   font-weight: bold;
   color: #2a4365;
 }
@@ -260,18 +279,21 @@ nav ul li {
   background-color: #3182ce;
 }
 
+.line-through {
+  text-decoration: line-through;
+}
 
 /* Cart page css starts here... */
 .cartWrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .cartCard {
-  width: 80%;
+  width: 95%;
   background: #ffffff;
   border: 1px solid #e1e1e1;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -282,6 +304,65 @@ nav ul li {
   align-items: center;
   padding: 12px ;
   margin:1rem 0;
+}
+
+.cartDetails {
+  width: 30%;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  /* display: flex;
+  justify-content: space-between; */
+  align-items: center;
+  padding: 12px ;
+  margin:1rem 1.3rem 1rem 0;
+  height: 5rem;
+}
+
+@media (max-width: 1000px) {
+ .cart{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ }
+ .cartDetails{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  margin:0 auto;
+
+ }
+}
+
+.item-btn{
+  display: flex;
+}
+
+.product-count{
+  margin:0.2rem 0.5rem 0 0 ;
+}
+@media (max-width:415px) {
+  .cartCard{
+    display: flex;
+    flex-direction: column;
+  }
+  .item-btn{
+    margin:0.8rem 0;
+
+  }
+  .btn-delete{
+    margin-left: 1rem;
+  }
+  .product-count{
+    padding: 0 1.5rem;
+  }
+  .cartDetails{
+    margin-bottom: 1rem;
+  }
 }
 
 .cartCardThumbnail {
@@ -325,6 +406,69 @@ nav ul li {
   margin-right: 8px;
 }
 
+.btnQuantity {
+  border: none;
+  outline: none;
+  background:#3498DB;
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-right: 8px;
+}
+
+.btn-delete{
+  border: none;
+  outline: none;
+  background:#DE3163;
+  padding: 5px 5px 2px;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-right: 8px;
+}
+
 .btn:hover {
   background: #513282;
+}
+
+/* css for Error component starts here */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.error-box {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  text-align: center;
+}
+
+.error-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e53e3e;
+  margin-bottom: 16px;
+}
+
+.error-message {
+  color: #666;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 460px) {
+  .error-box{
+    width: 90%;
+  }
 }

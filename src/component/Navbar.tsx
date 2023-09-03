@@ -2,10 +2,10 @@ import { BsCart3 } from 'react-icons/bs';
 import { FaHamburger } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { ProductType } from '../types/product.types';
+import { ProductTypeWithQuantity } from './CartItems';
 
 export interface CartType {
-  cart:  ProductType[];
+  cart:  ProductTypeWithQuantity[];
 }
 
 export default function Navbar() {

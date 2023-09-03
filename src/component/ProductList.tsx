@@ -1,10 +1,13 @@
 import { ProductType } from "../types/product.types";
+import NormalButton from "./NormalButton";
 
-export interface ProductListTypes{
-    product:ProductType,
-    addProduct:(product:ProductType)=>void
+export interface ProductListTypes {
+  product: ProductType;
+  addProduct: (product: ProductType) => void;
 }
-export default function ProductList({product, addProduct}:ProductListTypes) {
+export default function ProductList({ product, addProduct }: ProductListTypes) {
+  const discount = (product.discountPercentage / 100) * product.price; //converting the discount percentage to discount amount.
+  const discountedPrice = Math.floor(product.price - discount); //used Math.floor for rounding up the discounted price.
   return (
     <>
       <a href="#">
@@ -16,15 +19,18 @@ export default function ProductList({product, addProduct}:ProductListTypes) {
         <a href="#" className="product-title">
           {product.title}
         </a>
-        <p className="">{product.description}</p>
+        <p style={{fontSize:'14px'}}>{product.description}</p>
         <div className="add-to-cart">
-          <span className="product-price">${product.price}</span>
-          <button
-            className="add-to-cart-button"
+          <div className="price-view">
+            <span className="product-price line-through" style={{marginBottom:'4px'}}>${product.price}</span>
+            <span className="discounted-price">${discountedPrice}</span>
+          </div>
+
+          <NormalButton
+            btnName="Add to Cart"
+            cssClassName="add-to-cart-button"
             onClick={() => addProduct(product)}
-          >
-            Add to cart
-          </button>
+          />
         </div>
       </div>
     </>
